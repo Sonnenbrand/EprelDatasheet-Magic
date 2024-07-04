@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+Upload File
+{% endblock %}
+
+{% block content %}
+<h1>Upload Excel File</h1>
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <input type="submit" value="Upload">
+</form>
+
+{% if urls %}
+<h2>Generated URLs:</h2>
+<form action="/download" method="post">
+    {% for url in urls %}
+    <input type="hidden" name="urls" value="{{ url }}">
+    <p><a href="{{ url }}" target="_blank">{{ url }}</a></p>
+    {% endfor %}
+    <input type="submit" value="Download PDFs">
+</form>
+{% endif %}
+{% endblock %}
