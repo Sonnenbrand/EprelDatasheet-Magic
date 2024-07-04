@@ -5,20 +5,38 @@ Upload File
 {% endblock %}
 
 {% block content %}
-<h1>Upload Excel File</h1>
-<form method="post" enctype="multipart/form-data">
-    <input type="file" name="file" required>
-    <input type="submit" value="Upload">
-</form>
+<div class="container py-5">
+    <h1 class="mb-4">Upload Excel File</h1>
+    <form method="post" enctype="multipart/form-data" class="mb-4">
+        <div class="mb-3">
+            <input type="file" name="file" required id="file-upload" style="display: none;" onchange="updateLabel()">
+            <label for="file-upload" class="btn btn-primary" id="file-upload-label">Choose File</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
 
-{% if urls %}
-<h2>Generated URLs:</h2>
-<form action="/download" method="post">
-    {% for url in urls %}
-    <input type="hidden" name="urls" value="{{ url }}">
-    <p><a href="{{ url }}" target="_blank">{{ url }}</a></p>
-    {% endfor %}
-    <input type="submit" value="Download PDFs">
-</form>
-{% endif %}
+    {% if urls %}
+    <h2 class="mb-3">Generated URLs:</h2>
+    <form action="/download" method="post">
+        {% for url in urls %}
+        <input type="hidden" name="urls" value="{{ url }}">
+        <p><a href="{{ url }}" target="_blank" class="link-primary">{{ url }}</a></p>
+        {% endfor %}
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="convert_to_jpg" name="convert_to_jpg" value="true">
+            <label class="form-check-label" for="convert_to_jpg">Download as JPG</label>
+        </div>
+        <button type="submit" class="btn btn-success">Download Files</button>
+    </form>
+    {% endif %}
+</div>
+
+<script>
+function updateLabel() {
+    var inputFile = document.getElementById('file-upload');
+    var label = document.getElementById('file-upload-label');
+    var fileName = inputFile.value.split('\\').pop();
+    label.innerHTML = fileName ? fileName : 'Choose File';
+}
+</script>
 {% endblock %}
