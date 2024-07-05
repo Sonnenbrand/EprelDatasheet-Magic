@@ -7,11 +7,13 @@ Upload File
 {% block content %}
 <div class="container py-5">
     <h1 class="mb-4">Upload Excel File</h1>
+    <h3>Click button and select file to be uploaded:</h3>
     <form method="post" enctype="multipart/form-data" class="mb-4">
         <div class="mb-3">
             <input type="file" name="file" required id="file-upload" style="display: none;" onchange="updateLabel()">
-            <label for="file-upload" class="btn btn-primary" id="file-upload-label">Choose File</label>
+            <label for="file-upload" class="btn btn-warning" id="file-upload-label">Choose File</label>
         </div>
+    <h3>When you selected your file click upload:</h3>
         <button type="submit" class="btn btn-primary">Upload</button>
     </form>
 
@@ -35,8 +37,15 @@ Upload File
 function updateLabel() {
     var inputFile = document.getElementById('file-upload');
     var label = document.getElementById('file-upload-label');
+    var button = document.getElementById('file-upload-label');
     var fileName = inputFile.value.split('\\').pop();
-    label.innerHTML = fileName ? fileName : 'Choose File';
+    if (fileName) {
+        label.innerHTML = 'You selected file: ' + fileName;
+        button.className = 'btn btn-success';
+    } else {
+        label.innerHTML = 'Choose File';
+        button.className = 'btn btn-warning';
+    }
 }
 </script>
 {% endblock %}
