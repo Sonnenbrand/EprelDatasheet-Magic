@@ -8,6 +8,7 @@ from pdf2image import convert_from_path
 from PIL import Image
 import uuid
 import time
+import shutil
 
 upload = Blueprint('upload', __name__)
 
@@ -26,13 +27,12 @@ def upload_file():
     return render_template('upload.html')
 
 def cleanup_download_dir(base_path='downloads', max_age=24*60*60):
-    """Delete directories older than a day."""
+    """Delete directories and their contents older than a day."""
     now = time.time()
     for dirpath, dirnames, filenames in os.walk(base_path):
-        if not filenames:  # check if directory is empty
-            creation_time = os.path.getctime(dirpath)
-            if now - creation_time > max_age:
-                os.rmdir(dirpath)
+        creation_time = os.path.getctime(dirpath)
+        if now - creation_time > max_age:
+            shutil.rmtree(dirpath)
 
 @upload.route('/download', methods=['POST'])
 def download_files():
