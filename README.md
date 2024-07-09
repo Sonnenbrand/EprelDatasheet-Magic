@@ -18,3 +18,4 @@ Shlink Shortlinks management frontend via API
 
 [ ] Add Input fields to give Shlink Tags or Names who created the Link
 [ ] Add some kind of authentication so that not everyone can use the Shlink part
+[ ] Deployment Pipeline for Azure WebApps to use poppler-utils and .env variables
