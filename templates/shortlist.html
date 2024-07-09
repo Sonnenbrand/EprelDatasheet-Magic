@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>List of Short URLs</h1>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        {% if short_urls %}
+            <ul class="list-group">
+                {% for url in short_urls %}
+                    <li class="list-group-item">
+                        <a href="{{ url.shortUrl }}" target="_blank">{{ url.shortUrl }}</a> ({{ url.longUrl }})
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No short URLs found.</p>
+        {% endif %}
+    </div>
+{% endblock %}

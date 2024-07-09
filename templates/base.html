@@ -12,8 +12,11 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">KISS-Light by LEDVANCE</a>
-      <div class="collapse navbar-collapse">
+      <a class="navbar-brand" href="#">KISS-Light App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
@@ -23,6 +26,18 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/upload">EPREL Convert</a>
+          </li>
+          <!-- Expandable menu item -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              SHLINK
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/shortlist">List Short URLs</a>
+              <!-- Add more dropdown items here -->
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/shortcreate">Create Short URLs</a>
+            </div>
           </li>
           <!-- Add more navigation items here -->
         </ul>
@@ -35,11 +50,13 @@
 
     <footer class="footer fixed-bottom">
       <div class="p-3 mb-2 bg-light text-dark">
-        <span class="text-mudded">Current Version 1.0 - Code @ <a href="https://github.com/ledvance-pimcore/FlaskLDV" target="_blank">GitHub</a></span>
+        <span class="text-muted">Current Version 1.0 - Code @ <a href="https://github.com/ledvance-pimcore/FlaskLDV" target="_blank">GitHub</a></span>
       </div>
     </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>

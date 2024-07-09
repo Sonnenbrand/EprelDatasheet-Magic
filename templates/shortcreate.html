@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Create a Short URL</h1>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        <form method="post" action="{{ url_for('short.index') }}">
+            <div class="mb-3">
+                <label for="longUrl" class="form-label">Long URL</label>
+                <input type="url" class="form-control" id="longUrl" name="longUrl" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Shorten URL</button>
+        </form>
+        
+        {% if short_url %}
+            <div class="mt-4" id="result">
+                <h3>Short URL</h3>
+                <p><a href="{{ short_url }}" target="_blank">{{ short_url }}</a></p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
